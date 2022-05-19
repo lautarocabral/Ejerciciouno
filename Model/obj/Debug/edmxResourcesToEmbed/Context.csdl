@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Context" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ContextContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Empleadoes" EntityType="Context.Empleado" />
+    <EntitySet Name="Clientes" EntityType="Context.Cliente" />
+    <EntitySet Name="Categorias" EntityType="Context.Categoria" />
+    <AssociationSet Name="EmpleadoCliente" Association="Context.EmpleadoCliente">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="Cliente" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="EmpleadoCategoria" Association="Context.EmpleadoCategoria">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="Categoria" EntitySet="Categorias" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Clientes" Relationship="Context.EmpleadoCliente" FromRole="Empleado" ToRole="Cliente" />
+    <NavigationProperty Name="Categoria" Relationship="Context.EmpleadoCategoria" FromRole="Empleado" ToRole="Categoria" />
+    <Property Name="CategoriaIdCategoria" Type="Int32" Nullable="false" />
+    <Property Name="Saldo" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Empleado" Relationship="Context.EmpleadoCliente" FromRole="Cliente" ToRole="Empleado" />
+    <Property Name="EmpleadoIdEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" />
+    <Property Name="FechaNac" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Empleados" Relationship="Context.EmpleadoCategoria" FromRole="Categoria" ToRole="Empleado" />
+    <Property Name="NombreCat" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="EmpleadoCliente">
+    <End Type="Context.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="Context.Cliente" Role="Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="EmpleadoIdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpleadoCategoria">
+    <End Type="Context.Empleado" Role="Empleado" Multiplicity="*" />
+    <End Type="Context.Categoria" Role="Categoria" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="CategoriaIdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

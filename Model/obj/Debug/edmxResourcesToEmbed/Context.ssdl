@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Context.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ContextStoreContainer">
+    <EntitySet Name="Empleadoes" EntityType="Context.Store.Empleadoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Clientes" EntityType="Context.Store.Clientes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categorias" EntityType="Context.Store.Categorias" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="EmpleadoCliente" Association="Context.Store.EmpleadoCliente">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="Cliente" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="EmpleadoCategoria" Association="Context.Store.EmpleadoCategoria">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="Categoria" EntitySet="Categorias" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Empleadoes">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoriaIdCategoria" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpleadoIdEmpleado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="EmpleadoCliente">
+    <End Role="Empleado" Type="Context.Store.Empleadoes" Multiplicity="1" />
+    <End Role="Cliente" Type="Context.Store.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="EmpleadoIdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpleadoCategoria">
+    <End Role="Empleado" Type="Context.Store.Empleadoes" Multiplicity="*" />
+    <End Role="Categoria" Type="Context.Store.Categorias" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="CategoriaIdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

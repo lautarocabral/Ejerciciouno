@@ -1,0 +1,15 @@
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\Controller.dll.config
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\Controller.dll
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\Controller.pdb
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\EntityFramework.dll
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\Model.dll
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\Model.pdb
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\Model.dll.config
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\EntityFramework.xml
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\obj\Debug\Controller.csproj.AssemblyReference.cache
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\obj\Debug\Controller.csproj.CoreCompileInputs.cache
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\obj\Debug\Controller.csproj.CopyComplete
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\obj\Debug\Controller.dll
+C:\Users\lautaro\source\repos\Ejerciciouno\Controller\obj\Debug\Controller.pdb
